@@ -3,30 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nicholas Joshua — IT & Digital Portfolio</title>
+  <title>Nicholas Joshua — Portfolio</title>
   <style>
     :root{--accent:#0b5e8a;--muted:#666;--bg:#f7f9fb}
     body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;line-height:1.5;margin:0;background:var(--bg);color:#111}
     .wrap{max-width:980px;margin:28px auto;padding:28px;background:#fff;border-radius:10px;box-shadow:0 6px 24px rgba(15,23,42,0.06)}
     header{display:flex;gap:18px;align-items:center}
     .avatar{width:88px;height:88px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#036);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:28px}
-    h1{margin:0;font-size:22px}
-    p.lead{margin:6px 0 0;color:var(--muted)}
+    h1{margin:0;font-size:24px}
+    p.lead{margin:6px 0 0;color:var(--muted);font-size:15px}
     .meta{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:600}
+    .btn{display:inline-block;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px}
     .btn-primary{background:var(--accent);color:#fff}
     .btn-ghost{border:1px solid #e6eef6;color:var(--accent);background:transparent}
-    section{margin-top:22px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-    .card{background:#fbfeff;border:1px solid #e6f2f8;padding:14px;border-radius:10px}
-    .card h3{margin:0 0 8px;font-size:16px}
+    section{margin-top:30px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .card{background:#fbfeff;border:1px solid #e6f2f8;padding:16px;border-radius:10px}
+    .card h3{margin:0 0 8px;font-size:16px;color:#0b5e8a}
     .card p{margin:0 0 10px;color:var(--muted);font-size:14px}
     .small{font-size:13px;color:var(--muted)}
-    footer{margin-top:26px;padding-top:16px;border-top:1px dashed #eef6fb;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    footer{margin-top:26px;padding-top:16px;border-top:1px dashed #eef6fb;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--muted)}
     .skills{display:flex;flex-wrap:wrap;gap:8px}
     .skill{background:#f2fbff;color:#035; padding:6px 8px;border-radius:8px;font-size:13px}
     @media (max-width:560px){header{flex-direction:column;align-items:flex-start}.meta{flex-direction:column}}
-    /* small helper */
     .muted{color:var(--muted)}
   </style>
 </head>
@@ -36,7 +35,7 @@
       <div class="avatar">NJ</div>
       <div>
         <h1>Nicholas Joshua</h1>
-        <p class="lead">ICT / Communications Officer — Website & Systems | Civic Tech | Digital Content</p>
+        <p class="lead">Tech Professional — ICT | Web Development | Digital Media | Communications | Civic Engagement</p>
         <div class="meta">
           <div class="small">📍 Abuja, Nigeria</div>
           <div class="small">✉ nicholasjoshua26@gmail.com</div>
@@ -44,34 +43,20 @@
           <div class="small"><a class="btn btn-ghost" href="https://www.linkedin.com/in/nicki-josh/" target="_blank">LinkedIn</a></div>
         </div>
         <div style="margin-top:10px">
-          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-primary" href="#projects">Projects</a>
+          <a class="btn btn-ghost" href="#skills">Skills</a>
           <a class="btn btn-ghost" href="#contact">Contact</a>
         </div>
       </div>
     </header>
 
     <section id="about">
-      <h2 style="margin-bottom:6px">About</h2>
-      <p class="muted">I am an ICT and Communications professional with 3+ years’ experience building and supporting digital systems for NGOs and schools. I design and maintain websites, manage IT infrastructure, implement data protection and backups, and train staff to use digital tools effectively. I am currently expanding my backend development skills with ALX while delivering reliable ICT services in challenging environments.</p>
-    </section>
-
-    <!-- Key Achievements Section -->
-    <section id="achievements">
-      <h2 style="margin-bottom:6px">Key Achievements</h2>
-      <div class="grid">
-        <article class="card">
-          <h3><a href="https://ppj.priestsassembly.org" target="_blank">PPJ Priests Assembly</a></h3>
-          <p class="small">Designed and developed the official website for Priests Peace & Justice Initiative to strengthen visibility, advocacy, and outreach.</p>
-        </article>
-        <article class="card">
-          <h3><a href="https://africarepeace.org" target="_blank">Africa Repeace</a></h3>
-          <p class="small">Designed and deployed Africa Repeace’s website, enhancing digital presence and positioning for peacebuilding initiatives across Africa.</p>
-        </article>
-      </div>
+      <h2>About Me</h2>
+      <p class="muted">I am a multi-passionate professional combining ICT expertise, software development, digital media, and ministry engagement. With over 3 years of experience supporting NGOs, businesses, and communities, I design and maintain websites, manage IT infrastructure, build digital solutions, and create engaging media content. Beyond tech, I am also passionate about leadership, preaching, and storytelling that inspires transformation.</p>
     </section>
 
     <section id="projects">
-      <h2 style="margin-bottom:6px">Websites & Platforms</h2>
+      <h2>Websites & Platforms</h2>
       <div class="grid">
         <article class="card">
           <h3>Lizzysub</h3>
@@ -108,9 +93,19 @@
           <p class="small">Website support, updates, and infographic redesign for IRIAD NGO.</p>
           <a class="btn" href="https://iriadng.org" target="_blank">Visit site</a>
         </article>
+        <article class="card">
+          <h3>PPJ</h3>
+          <p class="small">Designed and launched official website for Priests Peace & Justice Initiative.</p>
+          <a class="btn" href="https://ppj.priestsassembly.org" target="_blank">Visit site</a>
+        </article>
+        <article class="card">
+          <h3>Africare Peace</h3>
+          <p class="small">NGO website design to strengthen digital presence and outreach.</p>
+          <a class="btn" href="https://africarepeace.org" target="_blank">Visit site</a>
+        </article>
       </div>
 
-      <h2 style="margin:20px 0 6px">Social Media Projects</h2>
+      <h2>Social Media & Digital Branding</h2>
       <div class="grid">
         <article class="card">
           <h3>PAPS Initiative</h3>
@@ -134,51 +129,54 @@
     </section>
 
     <section id="skills">
-      <h2 style="margin-bottom:6px">Skills & Tools</h2>
+      <h2>Skills & Tools</h2>
       <div class="skills">
-        <div class="skill">WordPress / cPanel</div>
+        <div class="skill">Web Development (WordPress / cPanel)</div>
         <div class="skill">Microsoft 365 / Google Workspace</div>
-        <div class="skill">Network setup & LAN/Wi-Fi</div>
+        <div class="skill">Networking (LAN/Wi-Fi)</div>
         <div class="skill">Backups & Disaster Recovery</div>
-        <div class="skill">Video Editing</div>
-        <div class="skill">Canva / Photoshop</div>
+        <div class="skill">Graphics Design (Canva / Photoshop)</div>
+        <div class="skill">Video Editing & Animation</div>
+        <div class="skill">Content Strategy & Digital Branding</div>
         <div class="skill">Python (basic)</div>
-        <div class="skill">ALX Backend developement</div>
+        <div class="skill">Backend Development (ALX)</div>
+        <div class="skill">Public Speaking & Preaching</div>
       </div>
     </section>
 
-    <section id="testimonials">
-      <h2 style="margin-bottom:6px">Highlights & Achievements</h2>
+    <section id="highlights">
+      <h2>Highlights & Achievements</h2>
       <div class="grid">
         <div class="card">
           <h3>Election Hub Support</h3>
           <p class="small">Managed ICT systems for election hubs during Nigeria's 2019 & 2023 elections — supported real-time reporting and data collection.</p>
         </div>
         <div class="card">
-          <h3>Website Redesign</h3>
-          <p class="small">Redesigned NGO websites to be mobile-friendly and faster — increased site engagement by 50% for one client.</p>
+          <h3>Website Design — PPJ & Africare</h3>
+          <p class="small">Delivered professional NGO web presence with <a href="https://ppj.priestsassembly.org" target="_blank">ppj.priestsassembly.org</a> and <a href="https://africarepeace.org" target="_blank">africarepeace.org</a>.</p>
         </div>
         <div class="card">
           <h3>Training & Capacity Building</h3>
           <p class="small">Delivered digital literacy and cyber hygiene sessions to staff and volunteers, improving safe usage and reducing incidents.</p>
         </div>
+        <div class="card">
+          <h3>Content Creation</h3>
+          <p class="small">Produced graphics, videos, and digital content for advocacy, church, and community growth initiatives.</p>
+        </div>
       </div>
     </section>
 
     <section id="contact">
-      <h2 style="margin-bottom:6px">Contact & Downloads</h2>
-      <p class="muted">You can download my CV or contact me directly for project files, GitHub access, or demos.</p>
-      <!-- Replace the href below with your actual file or cloud link to the CV -->
-      <p style="margin-top:8px"><a class="btn btn-primary" href="https://drive.google.com/file/d/1Fw0xrDs5tjZBQiufO86mgq2J4RQXYtL-/view?usp=sharing" id="download-cv">Download CV (PDF)</a>
+      <h2>Contact & Downloads</h2>
+      <p class="muted">You can download my CV or contact me directly for collaborations, project files, GitHub access, or demos.</p>
+      <p style="margin-top:8px"><a class="btn btn-primary" href="https://drive.google.com/file/d/1Fw0xrDs5tjZBQiufO86mgq2J4RQXYtL-/view?usp=sharing">Download CV (PDF)</a>
       <a class="btn btn-ghost" href="mailto:nicholasjoshua26@gmail.com">Email Me</a></p>
       <div style="margin-top:10px;font-size:14px;color:var(--muted)">LinkedIn: <a href="https://www.linkedin.com/in/nicki-josh/" target="_blank">nicki-josh</a></div>
     </section>
 
     <footer>
-      <div class="small">Made by Nicholas Joshua — ICT & Communications</div>
+      <div>© 2025 Nicholas Joshua — Personal Portfolio</div>
     </footer>
   </div>
-
-  <!-- Notes for editing: open this file in a text editor, replace links, add images or screenshots, and upload to your hosting. -->
 </body>
 </html>
