@@ -3,180 +3,760 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nicholas Joshua — Portfolio</title>
+  <title>Nicholas Joshua - Portfolio</title>
   <style>
-    :root{--accent:#0b5e8a;--muted:#666;--bg:#f7f9fb}
-    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;line-height:1.5;margin:0;background:var(--bg);color:#111}
-    .wrap{max-width:980px;margin:28px auto;padding:28px;background:#fff;border-radius:10px;box-shadow:0 6px 24px rgba(15,23,42,0.06)}
-    header{display:flex;gap:18px;align-items:center}
-    .avatar{width:88px;height:88px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#036);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:28px}
-    h1{margin:0;font-size:24px}
-    p.lead{margin:6px 0 0;color:var(--muted);font-size:15px}
-    .meta{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px}
-    .btn-primary{background:var(--accent);color:#fff}
-    .btn-ghost{border:1px solid #e6eef6;color:var(--accent);background:transparent}
-    section{margin-top:30px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-    .card{background:#fbfeff;border:1px solid #e6f2f8;padding:16px;border-radius:10px}
-    .card h3{margin:0 0 8px;font-size:16px;color:#0b5e8a}
-    .card p{margin:0 0 10px;color:var(--muted);font-size:14px}
-    .small{font-size:13px;color:var(--muted)}
-    footer{margin-top:26px;padding-top:16px;border-top:1px dashed #eef6fb;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--muted)}
-    .skills{display:flex;flex-wrap:wrap;gap:8px}
-    .skill{background:#f2fbff;color:#035; padding:6px 8px;border-radius:8px;font-size:13px}
-    @media (max-width:560px){header{flex-direction:column;align-items:flex-start}.meta{flex-direction:column}}
-    .muted{color:var(--muted)}
+    :root {
+      --bg: #f3efe7;
+      --surface: rgba(255, 252, 247, 0.86);
+      --surface-strong: #fffdfa;
+      --ink: #152027;
+      --muted: #5f6a70;
+      --line: rgba(21, 32, 39, 0.1);
+      --accent: #0f766e;
+      --accent-strong: #0b5f58;
+      --accent-soft: #d8f0ea;
+      --warm: #b45309;
+      --shadow: 0 28px 70px rgba(27, 39, 47, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --container: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(15, 118, 110, 0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(180, 83, 9, 0.18), transparent 22%),
+        linear-gradient(180deg, #f6f1e8 0%, #f3efe7 50%, #ece6db 100%);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(calc(100% - 32px), var(--container));
+      margin: 24px auto 48px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero {
+      border-radius: 32px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(15, 118, 110, 0.94), rgba(18, 53, 71, 0.9)),
+        linear-gradient(45deg, rgba(180, 83, 9, 0.25), transparent);
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 42px;
+      color: #f7f7f2;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.9fr);
+      gap: 28px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(2.7rem, 6vw, 4.6rem);
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      margin: 18px 0 0;
+      max-width: 64ch;
+      color: rgba(247, 247, 242, 0.88);
+      font-size: 1.02rem;
+    }
+
+    .hero-summary {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .hero-card h3 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(247, 247, 242, 0.8);
+      margin-bottom: 12px;
+    }
+
+    .hero-card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .hero-card li {
+      margin-bottom: 10px;
+      color: rgba(247, 247, 242, 0.9);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .meta-chip,
+    .skill,
+    .tag {
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 0.94rem;
+    }
+
+    .meta-chip {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: #f7f7f2;
+      color: #10383d;
+    }
+
+    .btn-secondary {
+      color: #f7f7f2;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: transparent;
+    }
+
+    .section {
+      margin-top: 26px;
+      border-radius: var(--radius-xl);
+      padding: 34px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-heading p {
+      margin: 10px 0 0;
+      max-width: 62ch;
+      color: var(--muted);
+    }
+
+    .section-kicker {
+      color: var(--warm);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: auto -30px -60px auto;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(15, 118, 110, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .card h3 {
+      font-size: 1.32rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      padding: 8px 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .text-link {
+      display: inline-flex;
+      margin-top: 18px;
+      font-weight: 700;
+      color: var(--accent-strong);
+      text-decoration: none;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 18px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      background: #f4efe4;
+      color: #2f3b40;
+      border: 1px solid rgba(47, 59, 64, 0.08);
+      font-weight: 700;
+    }
+
+    .highlight-card {
+      padding: 26px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(250, 246, 239, 0.98));
+      border: 1px solid rgba(15, 118, 110, 0.14);
+    }
+
+    .highlight-card.featured {
+      background:
+        linear-gradient(135deg, rgba(15, 118, 110, 0.08), rgba(255, 255, 255, 0.92)),
+        linear-gradient(180deg, #ffffff, #f4fbfa);
+      border-color: rgba(15, 118, 110, 0.26);
+    }
+
+    .highlight-card ul {
+      margin: 18px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .highlight-card li + li {
+      margin-top: 8px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+    }
+
+    .contact-item strong {
+      color: var(--ink);
+      min-width: 96px;
+    }
+
+    footer {
+      margin-top: 18px;
+      padding: 18px 8px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 960px) {
+      .hero-inner,
+      .split,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-summary {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(calc(100% - 18px), var(--container));
+        margin: 10px auto 28px;
+      }
+
+      .hero-inner,
+      .section {
+        padding: 22px;
+      }
+
+      .section-heading {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .btn,
+      .meta-chip,
+      .skill,
+      .tag {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="avatar">NJ</div>
-      <div>
-        <h1>Nicholas Joshua</h1>
-        <p class="lead">Tech Professional — ICT | Web Development | Digital Media | Communications | Civic Engagement</p>
-        <div class="meta">
-          <div class="small">📍 Abuja, Nigeria</div>
-          <div class="small">✉ nicholasjoshua26@gmail.com</div>
-          <div class="small">📞 +234 813 591 5380</div>
-          <div class="small"><a class="btn btn-ghost" href="https://www.linkedin.com/in/nicki-josh/" target="_blank">LinkedIn</a></div>
+  <main class="page">
+    <section class="hero panel">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Portfolio | ICT | Digital Media | Communications</div>
+          <h1>Nicholas Joshua</h1>
+          <p>
+            Tech professional blending ICT operations, web development, digital media, and civic
+            engagement. I build dependable systems, improve online visibility, and support
+            mission-driven teams with practical technical leadership.
+          </p>
+          <div class="meta">
+            <span class="meta-chip">Abuja, Nigeria</span>
+            <span class="meta-chip">nicholasjoshua26@gmail.com</span>
+            <span class="meta-chip">+234 813 591 5380</span>
+          </div>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://docs.google.com/document/d/1zOcAM9TFjEP9dx42Z_0wXtulE-DK8vaJ/edit?usp=sharing&amp;ouid=104674631059770402682&amp;rtpof=true&amp;sd=true" target="_blank" rel="noreferrer">Download CV</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/nicki-josh/" target="_blank" rel="noreferrer">LinkedIn Profile</a>
+            <a class="btn btn-secondary" href="#contact">Work With Me</a>
+          </div>
         </div>
-        <div style="margin-top:10px">
-          <a class="btn btn-primary" href="#projects">Projects</a>
-          <a class="btn btn-ghost" href="#skills">Skills</a>
-          <a class="btn btn-ghost" href="#contact">Contact</a>
+
+        <div class="hero-summary">
+          <div class="hero-card">
+            <h3>What I Deliver</h3>
+            <ul>
+              <li>Reliable web platforms for businesses, NGOs, and advocacy organizations.</li>
+              <li>Technical operations support for live, hybrid, and high-stakes events.</li>
+              <li>Digital branding, media coordination, and communication systems that scale.</li>
+            </ul>
+          </div>
+          <div class="hero-card">
+            <h3>Working Style</h3>
+            <ul>
+              <li>Calm under pressure during live operations and real-time technical support.</li>
+              <li>Hands-on across infrastructure, content, collaboration, and user experience.</li>
+              <li>Focused on clear systems, smooth delivery, and measurable team efficiency.</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </header>
-
-    <section id="about">
-      <h2>About Me</h2>
-      <p class="muted">I am a multi-passionate professional combining ICT expertise, software development, digital media, and ministry engagement. With over 3 years of experience supporting NGOs, businesses, and communities, I design and maintain websites, manage IT infrastructure, build digital solutions, and create engaging media content. Beyond tech, I am also passionate about leadership, preaching, and storytelling that inspires transformation.</p>
     </section>
 
-    <section id="projects">
-      <h2>Websites & Platforms</h2>
-      <div class="grid">
+    <section class="section panel" id="about">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">Profile</div>
+          <h2>Professional Overview</h2>
+          <p>
+            I am a multi-passionate professional with over three years of experience supporting
+            organizations, businesses, and communities through ICT, digital communication, and web
+            solutions. My work spans website management, technical operations, event support,
+            digital branding, and content systems that help teams communicate with confidence.
+          </p>
+        </div>
+      </div>
+      <div class="split">
+        <article class="card">
+          <h3>Core Focus</h3>
+          <p>
+            I support teams where dependable technology, strong communication, and smooth execution
+            matter most. That includes managing platforms, coordinating digital tools, solving
+            technical issues quickly, and helping projects present themselves professionally online.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Areas of Strength</h3>
+          <div class="skills" style="margin-top: 16px;">
+            <span class="skill">ICT Support</span>
+            <span class="skill">Website Management</span>
+            <span class="skill">Hybrid Event Tech</span>
+            <span class="skill">Digital Branding</span>
+            <span class="skill">Communications</span>
+            <span class="skill">Content Systems</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel" id="projects">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">Selected Work</div>
+          <h2>Websites and Platforms</h2>
+          <p>
+            A selection of websites and digital platforms I have designed, managed, or supported
+            for businesses and nonprofit organizations.
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-3">
         <article class="card">
           <h3>Lizzysub</h3>
-          <p class="small">VTU business website and platform for digital services.</p>
-          <a class="btn" href="https://lizzysub.com" target="_blank">Visit site</a>
+          <p>VTU business website and digital services platform.</p>
+          <div class="tag-row">
+            <span class="tag">Web Management</span>
+            <span class="tag">Digital Services</span>
+          </div>
+          <a class="text-link" href="https://lizzysub.com" target="_blank" rel="noreferrer">Visit site</a>
         </article>
         <article class="card">
           <h3>BestVTU</h3>
-          <p class="small">VTU platform development and management.</p>
-          <a class="btn" href="https://bestvtu.com" target="_blank">Visit site</a>
-        </article>
-        <article class="card">
-          <h3>EasyAPI</h3>
-          <p class="small">API service site.</p>
-          <a class="btn" href="https://easyapi.com.ng" target="_blank">Visit site</a>
+          <p>VTU platform development and operational management.</p>
+          <div class="tag-row">
+            <span class="tag">Platform Support</span>
+            <span class="tag">Operations</span>
+          </div>
+          <a class="text-link" href="https://bestvtu.com" target="_blank" rel="noreferrer">Visit site</a>
         </article>
         <article class="card">
           <h3>PayPoint</h3>
-          <p class="small">Payment and VTU solution website.</p>
-          <a class="btn" href="https://paypoint.com.ng" target="_blank">Visit site</a>
-        </article>
-        <article class="card">
-          <h3>VtuBase</h3>
-          <p class="small">Another VTU platform project under my management.</p>
-          <a class="btn" href="https://vtubase.com" target="_blank">Visit site</a>
+          <p>Payment and VTU solution website with business-facing digital services.</p>
+          <div class="tag-row">
+            <span class="tag">Payments</span>
+            <span class="tag">Website Support</span>
+          </div>
+          <a class="text-link" href="https://paypoint.com.ng" target="_blank" rel="noreferrer">Visit site</a>
         </article>
         <article class="card">
           <h3>SocialPilot</h3>
-          <p class="small">Social Media Marketing website designed for client visibility and growth in Nigeria.</p>
-          <a class="btn" href="https://socialpilot.com.ng" target="_blank">Visit site</a>
+          <p>Marketing website built to improve online visibility and growth for clients in Nigeria.</p>
+          <div class="tag-row">
+            <span class="tag">Marketing</span>
+            <span class="tag">Brand Visibility</span>
+          </div>
+          <a class="text-link" href="https://socialpilot.com.ng" target="_blank" rel="noreferrer">Visit site</a>
         </article>
         <article class="card">
-          <h3>IRIAD</h3>
-          <p class="small">Website support, updates, and infographic redesign for IRIAD NGO.</p>
-          <a class="btn" href="https://iriadng.org" target="_blank">Visit site</a>
-        </article>
-        <article class="card">
-          <h3>PPJ</h3>
-          <p class="small">Designed and launched official website for Priests Peace & Justice Initiative.</p>
-          <a class="btn" href="https://ppj.priestsassembly.org" target="_blank">Visit site</a>
+          <h3>Priests Peace &amp; Justice Initiative</h3>
+          <p>Official NGO website designed and launched to support public engagement and outreach.</p>
+          <div class="tag-row">
+            <span class="tag">NGO Website</span>
+            <span class="tag">Launch Support</span>
+          </div>
+          <a class="text-link" href="https://ppj.priestsassembly.org" target="_blank" rel="noreferrer">Visit site</a>
         </article>
         <article class="card">
           <h3>Africare Peace</h3>
-          <p class="small">NGO website design to strengthen digital presence and outreach.</p>
-          <a class="btn" href="https://africarepeace.org" target="_blank">Visit site</a>
+          <p>NGO website project built to strengthen digital presence and program visibility.</p>
+          <div class="tag-row">
+            <span class="tag">Digital Presence</span>
+            <span class="tag">Nonprofit</span>
+          </div>
+          <a class="text-link" href="https://africarepeace.org" target="_blank" rel="noreferrer">Visit site</a>
         </article>
       </div>
+    </section>
 
-      <h2>Social Media & Digital Branding</h2>
-      <div class="grid">
+    <section class="section panel" id="branding">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">Brand and Media</div>
+          <h2>Social Media and Digital Branding</h2>
+          <p>
+            I also support organizations with digital presence management, content coordination,
+            and audience-facing communication across key social platforms.
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-2">
         <article class="card">
           <h3>PAPS Initiative</h3>
-          <p class="small">Managed and coordinated digital presence across platforms.</p>
-          <div style="margin-top:8px">
-            <a class="btn" href="https://x.com/PAPSInitiative" target="_blank">Twitter/X</a>
-            <a class="btn" href="https://www.instagram.com/papsinitiative/" target="_blank">Instagram</a>
-            <a class="btn" href="https://web.facebook.com/PAPSInitiative" target="_blank">Facebook</a>
+          <p>Managed and coordinated digital presence across multiple platforms.</p>
+          <div class="tag-row">
+            <span class="tag">Social Strategy</span>
+            <span class="tag">Coordination</span>
+          </div>
+          <a class="text-link" href="https://x.com/PAPSInitiative" target="_blank" rel="noreferrer">Twitter/X</a>
+          <a class="text-link" href="https://www.instagram.com/papsinitiative/" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="text-link" href="https://web.facebook.com/PAPSInitiative" target="_blank" rel="noreferrer">Facebook</a>
+        </article>
+        <article class="card">
+          <h3>Palace of Priests Assembly</h3>
+          <p>Supported social media content and digital branding for church community outreach.</p>
+          <div class="tag-row">
+            <span class="tag">Community Outreach</span>
+            <span class="tag">Content Support</span>
+          </div>
+          <a class="text-link" href="https://x.com/priestsassembly" target="_blank" rel="noreferrer">Twitter/X</a>
+          <a class="text-link" href="https://www.instagram.com/priestsassembly/" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="text-link" href="https://web.facebook.com/priestsassembly" target="_blank" rel="noreferrer">Facebook</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel" id="experience">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">Work Experience</div>
+          <h2>Professional Experience</h2>
+          <p>
+            Roles where I have supported organizations through ICT operations, digital platforms,
+            communications, and event technology delivery.
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-2">
+        <article class="card highlight-card featured">
+          <h3>ICT Officer</h3>
+          <p><strong>African Centre for Leadership, Strategy and Development (Centre LSD)</strong><br />2025 - Present</p>
+          <ul>
+            <li>Manage and maintain organizational ICT infrastructure, ensuring optimal system performance and security.</li>
+            <li>Provide technical support for programs, events, and internal operations.</li>
+            <li>Coordinate and manage hybrid events, both physical and virtual, including Zoom, live streaming, and presentation systems.</li>
+            <li>Develop and manage digital platforms, including website updates and content management.</li>
+            <li>Implement automation tools such as Autocrat for efficient workflows, including certificate generation and distribution.</li>
+            <li>Support data collection, monitoring, and reporting systems for project activities.</li>
+            <li>Collaborate with communications and program teams to enhance digital engagement and outreach.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Key Achievement</span>
+          </div>
+          <p style="margin-top: 14px;">
+            Led technical operations for the National Summit on Male Feminism &amp; GBV Prevention in
+            Nigeria in April 2026, successfully managing hybrid participation with 700+ registrations,
+            live streaming, and automated certificate distribution with zero disruptions.
+          </p>
+        </article>
+        <article class="card highlight-card">
+          <h3>ICT/Communications Officer</h3>
+          <p><strong>Priests Peace &amp; Justice Initiative (PPJ)</strong><br />2023 - 2025</p>
+          <ul>
+            <li>Managed and updated organizational websites and digital platforms using WordPress.</li>
+            <li>Created and designed digital content including graphics, videos, and social media materials.</li>
+            <li>Supported communication strategies for projects funded by development partners, including the MacArthur Foundation.</li>
+            <li>Coordinated media coverage and documentation for events and advocacy programs.</li>
+            <li>Provided ICT support for training sessions, workshops, and stakeholder engagements.</li>
+            <li>Managed email communication systems and online participant engagement.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Key Achievements</span>
+          </div>
+          <p style="margin-top: 14px;">
+            Successfully supported ICT operations for major election-related projects during the 2019
+            and 2023 Nigeria elections, including Election Situation Room and data hubs.
+          </p>
+          <p style="margin-top: 12px;">
+            Improved digital visibility and engagement through consistent content creation and
+            platform management.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel" id="skills">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">Capabilities</div>
+          <h2>Skills and Tools</h2>
+          <p>
+            Practical tools and competencies I use across web support, IT operations, content
+            production, and digital communications.
+          </p>
+        </div>
+      </div>
+      <div class="skills">
+        <span class="skill">Web Development (WordPress / cPanel)</span>
+        <span class="skill">Microsoft 365 / Google Workspace</span>
+        <span class="skill">Networking (LAN / Wi-Fi)</span>
+        <span class="skill">Backups and Disaster Recovery</span>
+        <span class="skill">Graphics Design (Canva / Photoshop)</span>
+        <span class="skill">Video Editing and Animation</span>
+        <span class="skill">Content Strategy and Digital Branding</span>
+        <span class="skill">Zoom and Live Streaming Support</span>
+        <span class="skill">Autocrat and Certificate Automation</span>
+        <span class="skill">Python (Basic)</span>
+        <span class="skill">Backend Development (ALX)</span>
+        <span class="skill">Public Speaking and Preaching</span>
+      </div>
+    </section>
+
+    <section class="section panel" id="highlights">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">Highlights</div>
+          <h2>Achievements and Impact</h2>
+          <p>
+            A snapshot of projects, operational wins, and technical responsibilities that reflect
+            my range across ICT, events, web platforms, and communications.
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-2">
+        <article class="card highlight-card featured">
+          <h3>ICT Officer / Technical Lead - National Summit on Male Feminism &amp; GBV Prevention in Nigeria</h3>
+          <p><strong>African Centre for Leadership, Strategy and Development (Centre LSD)</strong><br />April 2026</p>
+          <ul>
+            <li>Managed end-to-end technical operations for a large-scale hybrid summit with over 700 registered participants.</li>
+            <li>Coordinated virtual and physical event infrastructure, including Zoom, live streaming, and presentation systems.</li>
+            <li>Provided real-time technical support that ensured seamless execution with zero disruptions.</li>
+            <li>Set up and automated certificate generation and distribution using Autocrat, improving efficiency and participant experience.</li>
+            <li>Supported participant onboarding and digital communication systems throughout the summit.</li>
+            <li>Collaborated with program and communications teams to ensure smooth delivery of all sessions.</li>
+          </ul>
+        </article>
+        <article class="card highlight-card">
+          <h3>Election Hub Support</h3>
+          <p>Managed ICT systems for election hubs during Nigeria's 2019 and 2023 elections, supporting real-time reporting and data collection.</p>
+        </article>
+        <article class="card highlight-card">
+          <h3>Website Delivery for PPJ and Africare</h3>
+          <p>Delivered professional nonprofit web presence for advocacy and outreach through public-facing websites and launch support.</p>
+        </article>
+        <article class="card highlight-card">
+          <h3>Training and Capacity Building</h3>
+          <p>Delivered digital literacy and cyber hygiene sessions to staff and volunteers, improving safe usage and reducing incidents.</p>
+        </article>
+        <article class="card highlight-card">
+          <h3>Content Creation and Media Support</h3>
+          <p>Produced graphics, videos, and digital media content for advocacy, church, and community growth initiatives.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel" id="contact">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">Contact</div>
+          <h2>Let's Connect</h2>
+          <p>
+            Available for ICT roles, technical support engagements, digital projects, nonprofit
+            collaboration, and communications-focused work.
+          </p>
+        </div>
+      </div>
+      <div class="split">
+        <article class="card">
+          <div class="contact-list">
+            <div class="contact-item"><strong>Email</strong><span><a href="mailto:nicholasjoshua26@gmail.com">nicholasjoshua26@gmail.com</a></span></div>
+            <div class="contact-item"><strong>Phone</strong><span><a href="tel:+2348135915380">+234 813 591 5380</a></span></div>
+            <div class="contact-item"><strong>LinkedIn</strong><span><a href="https://www.linkedin.com/in/nicki-josh/" target="_blank" rel="noreferrer">linkedin.com/in/nicki-josh</a></span></div>
+            <div class="contact-item"><strong>Location</strong><span>Abuja, Nigeria</span></div>
           </div>
         </article>
         <article class="card">
-          <h3>Palace of Priests Assembly (PPA)</h3>
-          <p class="small">Social media content and digital branding support for church community outreach.</p>
-          <div style="margin-top:8px">
-            <a class="btn" href="https://x.com/priestsassembly" target="_blank">Twitter/X</a>
-            <a class="btn" href="https://www.instagram.com/priestsassembly/" target="_blank">Instagram</a>
-            <a class="btn" href="https://web.facebook.com/priestsassembly" target="_blank">Facebook</a>
+          <h3>Portfolio Access</h3>
+          <p>
+            You can review my CV for a fuller record of my experience and contact me directly for
+            collaborations, project demos, technical support work, or website management engagements.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://docs.google.com/document/d/1zOcAM9TFjEP9dx42Z_0wXtulE-DK8vaJ/edit?usp=sharing&amp;ouid=104674631059770402682&amp;rtpof=true&amp;sd=true" target="_blank" rel="noreferrer">Open CV</a>
+            <a class="btn btn-secondary" style="color: var(--accent-strong); border-color: rgba(15, 118, 110, 0.22);" href="mailto:nicholasjoshua26@gmail.com">Send Email</a>
           </div>
         </article>
       </div>
-    </section>
-
-    <section id="skills">
-      <h2>Skills & Tools</h2>
-      <div class="skills">
-        <div class="skill">Web Development (WordPress / cPanel)</div>
-        <div class="skill">Microsoft 365 / Google Workspace</div>
-        <div class="skill">Networking (LAN/Wi-Fi)</div>
-        <div class="skill">Backups & Disaster Recovery</div>
-        <div class="skill">Graphics Design (Canva / Photoshop)</div>
-        <div class="skill">Video Editing & Animation</div>
-        <div class="skill">Content Strategy & Digital Branding</div>
-        <div class="skill">Python (basic)</div>
-        <div class="skill">Backend Development (ALX)</div>
-        <div class="skill">Public Speaking & Preaching</div>
-      </div>
-    </section>
-
-    <section id="highlights">
-      <h2>Highlights & Achievements</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Election Hub Support</h3>
-          <p class="small">Managed ICT systems for election hubs during Nigeria's 2019 & 2023 elections — supported real-time reporting and data collection.</p>
-        </div>
-        <div class="card">
-          <h3>Website Design — PPJ & Africare</h3>
-          <p class="small">Delivered professional NGO web presence with <a href="https://ppj.priestsassembly.org" target="_blank">ppj.priestsassembly.org</a> and <a href="https://africarepeace.org" target="_blank">africarepeace.org</a>.</p>
-        </div>
-        <div class="card">
-          <h3>Training & Capacity Building</h3>
-          <p class="small">Delivered digital literacy and cyber hygiene sessions to staff and volunteers, improving safe usage and reducing incidents.</p>
-        </div>
-        <div class="card">
-          <h3>Content Creation</h3>
-          <p class="small">Produced graphics, videos, and digital content for advocacy, church, and community growth initiatives.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact & Downloads</h2>
-      <p class="muted">You can download my CV or contact me directly for collaborations, project files, GitHub access, or demos.</p>
-      <p style="margin-top:8px"><a class="btn btn-primary" href="https://drive.google.com/file/d/1Fw0xrDs5tjZBQiufO86mgq2J4RQXYtL-/view?usp=sharing">Download CV (PDF)</a>
-      <a class="btn btn-ghost" href="mailto:nicholasjoshua26@gmail.com">Email Me</a></p>
-      <div style="margin-top:10px;font-size:14px;color:var(--muted)">LinkedIn: <a href="https://www.linkedin.com/in/nicki-josh/" target="_blank">nicki-josh</a></div>
     </section>
 
     <footer>
-      <div>© 2025 Nicholas Joshua — Personal Portfolio</div>
+      Nicholas Joshua - Personal Portfolio
     </footer>
-  </div>
+  </main>
 </body>
 </html>
